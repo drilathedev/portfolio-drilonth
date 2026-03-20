@@ -453,7 +453,8 @@
       }
     }
 
-    .val-card.touch-hover::after {
+    .val-card.touch-hover::after,
+    .val-card.mobile-active::after {
       transform: scaleX(1)
     }
 
@@ -542,7 +543,8 @@
       }
     }
 
-    .proj.touch-hover::after {
+    .proj.touch-hover::after,
+    .proj.mobile-active::after {
       transform: scaleX(1)
     }
 
@@ -562,7 +564,8 @@
       }
     }
 
-    .proj.touch-hover .proj-name {
+    .proj.touch-hover .proj-name,
+    .proj.mobile-active .proj-name {
       color: var(--red)
     }
 
@@ -583,7 +586,8 @@
       }
     }
 
-    .proj.touch-hover .proj-n {
+    .proj.touch-hover .proj-n,
+    .proj.mobile-active .proj-n {
       color: var(--red)
     }
 
@@ -626,7 +630,8 @@
       }
     }
 
-    .proj.touch-hover .proj-tag {
+    .proj.touch-hover .proj-tag,
+    .proj.mobile-active .proj-tag {
       border-color: rgba(214, 40, 40, .3);
       color: var(--red)
     }
@@ -646,7 +651,8 @@
       }
     }
 
-    .proj.touch-hover .proj-arrow {
+    .proj.touch-hover .proj-arrow,
+    .proj.mobile-active .proj-arrow {
       color: var(--red);
       transform: translate(4px, -4px)
     }
@@ -691,7 +697,8 @@
       }
     }
 
-    .exp-row.touch-hover::after {
+    .exp-row.touch-hover::after,
+    .exp-row.mobile-active::after {
       transform: scaleX(1)
     }
 
@@ -711,7 +718,8 @@
       }
     }
 
-    .exp-row.touch-hover .exp-role {
+    .exp-row.touch-hover .exp-role,
+    .exp-row.mobile-active .exp-role {
       color: var(--red)
     }
 
@@ -766,7 +774,8 @@
       }
     }
 
-    .exp-row.touch-hover .exp-badge {
+    .exp-row.touch-hover .exp-badge,
+    .exp-row.mobile-active .exp-badge {
       color: var(--red);
       border-color: rgba(214, 40, 40, .28)
     }
@@ -811,7 +820,8 @@
       }
     }
 
-    .extra-row.touch-hover::after {
+    .extra-row.touch-hover::after,
+    .extra-row.mobile-active::after {
       transform: scaleX(1)
     }
 
@@ -850,7 +860,8 @@
       }
     }
 
-    .extra-row.touch-hover .extra-title {
+    .extra-row.touch-hover .extra-title,
+    .extra-row.mobile-active .extra-title {
       color: var(--red)
     }
 
@@ -896,7 +907,8 @@
       }
     }
 
-    .sk-cell.touch-hover::after {
+    .sk-cell.touch-hover::after,
+    .sk-cell.mobile-active::after {
       transform: scaleX(1)
     }
 
@@ -933,7 +945,8 @@
       }
     }
 
-    .sk-cell.touch-hover .sk-list li {
+    .sk-cell.touch-hover .sk-list li,
+    .sk-cell.mobile-active .sk-list li {
       color: var(--ink)
     }
 
@@ -1652,7 +1665,7 @@
       });
     }
     if (!supportsHover) {
-      const touchTargets = document.querySelectorAll('.nav-links a,.hero-cta,.tag,.val-card,.proj,.exp-row,.extra-row,.sk-cell,.c-email,.c-link');
+      const touchTargets = document.querySelectorAll('.nav-links a,.hero-cta,.tag,.c-email,.c-link');
       const clearTouchHover = () => touchTargets.forEach(el => el.classList.remove('touch-hover'));
       touchTargets.forEach(el => {
         el.addEventListener('touchstart', () => {
@@ -1666,6 +1679,14 @@
       });
       document.addEventListener('touchmove', clearTouchHover, { passive: true });
       document.addEventListener('scroll', clearTouchHover, { passive: true });
+
+      const mobileHoverTargets = document.querySelectorAll('.val-card,.proj,.exp-row,.extra-row,.sk-cell');
+      const mobileHoverObs = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          entry.target.classList.toggle('mobile-active', entry.isIntersecting);
+        });
+      }, { threshold: .35, rootMargin: '0px 0px -12% 0px' });
+      mobileHoverTargets.forEach(el => mobileHoverObs.observe(el));
     }
     const nav = document.getElementById('nav');
     addEventListener('scroll', () => nav.classList.toggle('scrolled', scrollY > 40), { passive: true });
