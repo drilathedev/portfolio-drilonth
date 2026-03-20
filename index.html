@@ -142,14 +142,6 @@
       transition: width .4s cubic-bezier(.16, 1, .3, 1);
     }
 
-    .nav-links a:hover {
-      color: var(--red)
-    }
-
-    .nav-links a:hover::after {
-      width: 100%
-    }
-
     /* ── HERO ── */
     .hero {
       min-height: 100svh;
@@ -294,19 +286,10 @@
       transition: background .25s, gap .35s cubic-bezier(.16, 1, .3, 1);
     }
 
-    .hero-cta:hover {
-      background: #B01E1E;
-      gap: 18px
-    }
-
     .hero-cta svg {
       width: 13px;
       height: 13px;
       transition: transform .35s cubic-bezier(.16, 1, .3, 1)
-    }
-
-    .hero-cta:hover svg {
-      transform: translate(3px, -3px)
     }
 
     /* ── SHARED ── */
@@ -376,12 +359,6 @@
       transition: color .28s, border-color .28s, transform .3s cubic-bezier(.34, 1.56, .64, 1);
     }
 
-    .tag:hover {
-      border-color: var(--red);
-      color: var(--red);
-      transform: translateY(-2px)
-    }
-
     /* ── VALUES ── */
     .values {
       padding-top: 0;
@@ -414,10 +391,6 @@
       transform: scaleX(0);
       transform-origin: left;
       transition: transform .75s cubic-bezier(.16, 1, .3, 1) .04s;
-    }
-
-    .val-card:hover::after {
-      transform: scaleX(1)
     }
 
     .val-num {
@@ -499,10 +472,6 @@
       transition: transform .75s cubic-bezier(.16, 1, .3, 1) .04s;
     }
 
-    .proj:hover::after {
-      transform: scaleX(1)
-    }
-
     .proj-name {
       font-family: 'Playfair Display', serif;
       font-size: clamp(26px, 3.2vw, 44px);
@@ -511,10 +480,6 @@
       line-height: 1.08;
       margin-bottom: 8px;
       transition: color .3s;
-    }
-
-    .proj:hover .proj-name {
-      color: var(--red)
     }
 
     .proj-n {
@@ -526,10 +491,6 @@
       align-self: flex-start;
       padding-top: 6px;
       transition: color .3s;
-    }
-
-    .proj:hover .proj-n {
-      color: var(--red)
     }
 
     .proj-body {
@@ -564,22 +525,12 @@
       transition: border-color .3s, color .3s;
     }
 
-    .proj:hover .proj-tag {
-      border-color: rgba(214, 40, 40, .3);
-      color: var(--red)
-    }
-
     .proj-arrow {
       font-size: 18px;
       color: var(--border);
       align-self: flex-start;
       padding-top: 4px;
       transition: color .3s, transform .4s cubic-bezier(.34, 1.56, .64, 1);
-    }
-
-    .proj:hover .proj-arrow {
-      color: var(--red);
-      transform: translate(4px, -4px)
     }
 
     /* ── EXPERIENCE ── */
@@ -616,10 +567,6 @@
       transition: transform .75s cubic-bezier(.16, 1, .3, 1) .04s;
     }
 
-    .exp-row:hover::after {
-      transform: scaleX(1)
-    }
-
     .exp-role {
       font-family: 'Playfair Display', serif;
       font-size: clamp(22px, 2.6vw, 34px);
@@ -628,10 +575,6 @@
       line-height: 1.1;
       margin-bottom: 14px;
       transition: color .3s;
-    }
-
-    .exp-row:hover .exp-role {
-      color: var(--red)
     }
 
     .exp-period {
@@ -678,11 +621,6 @@
       transition: color .3s, border-color .3s;
     }
 
-    .exp-row:hover .exp-badge {
-      color: var(--red);
-      border-color: rgba(214, 40, 40, .28)
-    }
-
     /* ── EXTRAS ── */
     .extras-list {
       display: flex;
@@ -717,10 +655,6 @@
       transition: transform .75s cubic-bezier(.16, 1, .3, 1) .04s;
     }
 
-    .extra-row:hover::after {
-      transform: scaleX(1)
-    }
-
     .extra-meta {}
 
     .extra-tag {
@@ -748,10 +682,6 @@
       line-height: 1.1;
       margin-bottom: 12px;
       transition: color .3s;
-    }
-
-    .extra-row:hover .extra-title {
-      color: var(--red)
     }
 
     .extra-txt {
@@ -790,10 +720,6 @@
       transition: transform .75s cubic-bezier(.16, 1, .3, 1) .04s;
     }
 
-    .sk-cell:hover::after {
-      transform: scaleX(1)
-    }
-
     .sk-label {
       font-size: 9px;
       font-weight: 700;
@@ -819,10 +745,6 @@
       align-items: center;
       gap: 10px;
       transition: color .3s;
-    }
-
-    .sk-cell:hover .sk-list li {
-      color: var(--ink)
     }
 
     .sk-list li::before {
@@ -891,11 +813,6 @@
       transition: color .3s, border-color .3s;
     }
 
-    .c-email:hover {
-      color: var(--red);
-      border-color: var(--red)
-    }
-
     .c-links {
       display: flex;
       justify-content: center;
@@ -923,14 +840,6 @@
       height: 1px;
       background: var(--red);
       transition: width .4s cubic-bezier(.16, 1, .3, 1);
-    }
-
-    .c-link:hover {
-      color: var(--red)
-    }
-
-    .c-link:hover::after {
-      width: 100%
     }
 
     /* ── FOOTER ── */
@@ -1012,6 +921,99 @@
 
     .d4 {
       transition-delay: .36s
+    }
+
+    @media (hover: hover) and (pointer: fine) {
+      .nav-links a:hover {
+        color: var(--red)
+      }
+
+      .nav-links a:hover::after {
+        width: 100%
+      }
+
+      .hero-cta:hover {
+        background: #B01E1E;
+        gap: 18px
+      }
+
+      .hero-cta:hover svg {
+        transform: translate(3px, -3px)
+      }
+
+      .tag:hover {
+        border-color: var(--red);
+        color: var(--red);
+        transform: translateY(-2px)
+      }
+
+      .val-card:hover::after {
+        transform: scaleX(1)
+      }
+
+      .proj:hover::after {
+        transform: scaleX(1)
+      }
+
+      .proj:hover .proj-name {
+        color: var(--red)
+      }
+
+      .proj:hover .proj-n {
+        color: var(--red)
+      }
+
+      .proj:hover .proj-tag {
+        border-color: rgba(214, 40, 40, .3);
+        color: var(--red)
+      }
+
+      .proj:hover .proj-arrow {
+        color: var(--red);
+        transform: translate(4px, -4px)
+      }
+
+      .exp-row:hover::after {
+        transform: scaleX(1)
+      }
+
+      .exp-row:hover .exp-role {
+        color: var(--red)
+      }
+
+      .exp-row:hover .exp-badge {
+        color: var(--red);
+        border-color: rgba(214, 40, 40, .28)
+      }
+
+      .extra-row:hover::after {
+        transform: scaleX(1)
+      }
+
+      .extra-row:hover .extra-title {
+        color: var(--red)
+      }
+
+      .sk-cell:hover::after {
+        transform: scaleX(1)
+      }
+
+      .sk-cell:hover .sk-list li {
+        color: var(--ink)
+      }
+
+      .c-email:hover {
+        color: var(--red);
+        border-color: var(--red)
+      }
+
+      .c-link:hover {
+        color: var(--red)
+      }
+
+      .c-link:hover::after {
+        width: 100%
+      }
     }
 
     /* ── RESPONSIVE ── */
