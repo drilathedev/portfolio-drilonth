@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Drilon Thaqi — Frontend Engineer</title>
-<meta name="description" content="Frontend Engineer based in Pristina, Kosovo. Vue 3, React, Nuxt. Building scalable, high-performance web experiences.">
+<meta name="description" content="Frontend Engineer based in Pristina, Kosovo. Strongest in Vue 3 and JavaScript, with React experience. Building scalable, high-performance web experiences.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=Geist+Mono:wght@300;400&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
@@ -156,18 +156,18 @@ section{padding:110px var(--pad);border-top:1px solid var(--border)}
 .work-hd{display:flex;justify-content:space-between;align-items:baseline;padding:64px 0 52px}
 .work-count{font-family:'Geist Mono',monospace;font-size:11px;color:var(--muted)}
 
-/* Project cards with mockup previews */
+/* Project cards */
 .proj-grid{display:flex;flex-direction:column;gap:0}
 .proj{
-  display:grid;grid-template-columns:1fr 280px;
-  gap:0;border-top:1px solid var(--border);
+  display:block;
+  border-top:1px solid var(--border);
   text-decoration:none;color:inherit;position:relative;overflow:hidden;
   transition:background .4s;
 }
 .proj:last-child{border-bottom:1px solid var(--border)}
 .proj::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--red);transform:scaleX(0);transform-origin:left;transition:transform .8s cubic-bezier(.16,1,.3,1) .04s}
 .proj:hover::after{transform:scaleX(1)}
-.proj-left{padding:44px 48px 44px 0}
+.proj-left{padding:44px 48px 44px 0;max-width:720px}
 .proj-head{display:flex;align-items:baseline;gap:20px;margin-bottom:14px}
 .proj-n{font-family:'Geist Mono',monospace;font-size:11px;color:var(--border);font-weight:300;transition:color .3s;flex-shrink:0}
 .proj:hover .proj-n{color:var(--red)}
@@ -177,56 +177,6 @@ section{padding:110px var(--pad);border-top:1px solid var(--border)}
 .proj-tags{display:flex;gap:7px;flex-wrap:wrap}
 .proj-tag{font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);border:1px solid var(--border);border-radius:2px;padding:3px 10px;transition:border-color .3s,color .3s}
 .proj:hover .proj-tag{border-color:rgba(214,40,40,.3);color:var(--red)}
-
-/* Project mockup panel */
-.proj-preview{
-  border-left:1px solid var(--border);
-  background:var(--border);
-  position:relative;overflow:hidden;
-  min-height:240px;
-  transition:background .4s;
-}
-.proj:hover .proj-preview{background:rgba(214,40,40,.05)}
-
-/* CSS art mockup - browser window */
-.mock{width:100%;height:100%;display:flex;flex-direction:column;padding:0}
-.mock-bar{height:32px;background:rgba(249,246,242,.9);display:flex;align-items:center;padding:0 14px;gap:6px;flex-shrink:0;border-bottom:1px solid var(--border)}
-.mock-dot{width:8px;height:8px;border-radius:50%}
-.mock-dot:nth-child(1){background:#ff5f57}
-.mock-dot:nth-child(2){background:#febc2e}
-.mock-dot:nth-child(3){background:#28c840}
-.mock-url{flex:1;height:16px;background:var(--border);border-radius:8px;margin:0 12px}
-.mock-body{flex:1;padding:16px;display:flex;flex-direction:column;gap:8px;overflow:hidden}
-
-/* Parfuma KS mockup - e-commerce */
-.mock-parfuma .m-hero{height:60px;background:linear-gradient(135deg,#1a1210 60%,#3d1a10 100%);border-radius:2px;position:relative;overflow:hidden}
-.mock-parfuma .m-hero::after{content:'PARFUMA';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:'Playfair Display',serif;font-size:8px;color:rgba(255,255,255,.5);letter-spacing:.2em}
-.mock-parfuma .m-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
-.mock-parfuma .m-card{aspect-ratio:1;border-radius:2px;background:rgba(200,150,100,.2)}
-.mock-parfuma .m-card:nth-child(1){background:rgba(214,40,40,.15)}
-.mock-parfuma .m-line{height:6px;border-radius:3px;background:var(--border)}
-.mock-parfuma .m-line.short{width:60%}
-
-/* Nona's Ajvar mockup - brand */
-.mock-nona .m-big{height:80px;background:linear-gradient(160deg,#c8502a,#8b2a1a);border-radius:2px;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center}
-.mock-nona .m-big::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40'%3E%3Ccircle cx='20' cy='20' r='15' fill='none' stroke='rgba(255,255,255,.1)' stroke-width='1'/%3E%3C/svg%3E") repeat}
-.mock-nona .m-big-text{font-family:'Playfair Display',serif;font-size:9px;color:rgba(255,255,255,.7);letter-spacing:.15em;font-style:italic;position:relative}
-.mock-nona .m-row{display:flex;gap:6px}
-.mock-nona .m-block{height:32px;flex:1;border-radius:2px;background:rgba(200,100,60,.15)}
-.mock-nona .m-line{height:5px;border-radius:3px;background:var(--border)}
-
-/* Prona360 mockup - real estate */
-.mock-prona .m-map{height:70px;border-radius:2px;background:linear-gradient(160deg,#d4e8d4,#c0d8c0);position:relative;overflow:hidden}
-.mock-prona .m-map::before{content:'';position:absolute;inset:0;
-  background:repeating-linear-gradient(0deg,transparent,transparent 12px,rgba(0,0,0,.04) 12px,rgba(0,0,0,.04) 13px),
-             repeating-linear-gradient(90deg,transparent,transparent 12px,rgba(0,0,0,.04) 12px,rgba(0,0,0,.04) 13px)}
-.mock-prona .m-pin{position:absolute;top:30%;left:40%;width:10px;height:10px;background:var(--red);border-radius:50% 50% 50% 0;transform:rotate(-45deg)}
-.mock-prona .m-listings{display:flex;flex-direction:column;gap:6px}
-.mock-prona .m-listing{display:flex;gap:8px;align-items:center}
-.mock-prona .m-listing-img{width:28px;height:22px;border-radius:2px;background:rgba(100,150,100,.3);flex-shrink:0}
-.mock-prona .m-listing-info{display:flex;flex-direction:column;gap:3px;flex:1}
-.mock-prona .m-mini-line{height:4px;border-radius:2px;background:var(--border)}
-.mock-prona .m-mini-line.red{background:rgba(214,40,40,.3);width:40%}
 
 /* Visit arrow on proj */
 .proj-arrow-wrap{position:absolute;top:40px;right:40px;font-size:22px;color:var(--border);transition:color .3s,transform .45s cubic-bezier(.34,1.56,.64,1)}
@@ -306,11 +256,8 @@ footer span{font-family:'Geist Mono',monospace;font-size:10px;font-weight:300;co
 @media(max-width:1100px){
   :root{--pad:44px}
   .sk-grid{grid-template-columns:repeat(3,1fr)}
-  .proj{grid-template-columns:1fr 220px}
 }
 @media(max-width:900px){
-  .proj{grid-template-columns:1fr}
-  .proj-preview{display:none}
   .about{grid-template-columns:1fr}
   .values{grid-template-columns:1fr}
   .val-card{border-right:none;border-bottom:1px solid var(--border)}
@@ -414,7 +361,7 @@ footer span{font-family:'Geist Mono',monospace;font-size:10px;font-weight:300;co
   </h1>
   <div class="hero-typed" id="typedEl"><span class="cursor-blink"></span></div>
   <div class="hero-foot">
-    <p class="hero-desc">Frontend Engineer crafting<br>scalable, high-performance<br>web experiences.<br>Vue 3 · React · Nuxt</p>
+    <p class="hero-desc">Frontend Engineer crafting<br>scalable, high-performance<br>web experiences.<br>Vue 3 · JavaScript · React</p>
     <div class="cta-zone" id="ctaZone">
       <a href="#contact" class="cta" id="ctaBtn">
         Let's talk
@@ -432,11 +379,11 @@ footer span{font-family:'Geist Mono',monospace;font-size:10px;font-weight:300;co
   </div>
   <div class="about-right reveal d2">
     <p>I'm a frontend engineer based in Pristina, Kosovo. I specialize in building web applications where technical precision and visual craft go hand in hand — because the difference between good and great lives in the details.</p>
-    <p>Currently at Gjirafa, Kosovo's leading tech company, working across a range of digital products. I care deeply about clean, readable code — not just for the browser, but for every engineer who comes after me.</p>
+    <p>My strongest day-to-day stack is Vue and modern JavaScript, with React experience when the product calls for it. Currently at Gjirafa, Kosovo's leading tech company, I care deeply about clean, readable code — not just for the browser, but for every engineer who comes after me.</p>
     <div class="tags">
-      <span class="tag">Vue 3</span><span class="tag">React</span><span class="tag">Nuxt</span>
-      <span class="tag">Tailwind</span><span class="tag">SCSS</span><span class="tag">Pinia</span><span class="tag">Vuex</span>
-      <span class="tag">JS ES6+</span><span class="tag">Git</span>
+      <span class="tag">Vue 3</span><span class="tag">JavaScript</span><span class="tag">Nuxt</span>
+      <span class="tag">React</span><span class="tag">Tailwind</span><span class="tag">SCSS</span><span class="tag">Pinia</span>
+      <span class="tag">Vuex</span><span class="tag">Git</span>
     </div>
   </div>
 </section>
@@ -479,16 +426,6 @@ footer span{font-family:'Geist Mono',monospace;font-size:10px;font-weight:300;co
           <span class="proj-tag">Vue 3</span><span class="proj-tag">Tailwind</span><span class="proj-tag">E-commerce</span>
         </div>
       </div>
-      <div class="proj-preview">
-        <div class="mock mock-parfuma">
-          <div class="mock-bar"><div class="mock-dot"></div><div class="mock-dot"></div><div class="mock-dot"></div><div class="mock-url"></div></div>
-          <div class="mock-body">
-            <div class="m-hero"></div>
-            <div class="m-grid"><div class="m-card"></div><div class="m-card"></div><div class="m-card"></div></div>
-            <div class="m-line"></div><div class="m-line short"></div>
-          </div>
-        </div>
-      </div>
       <span class="proj-arrow-wrap">↗</span>
     </a>
 
@@ -503,16 +440,6 @@ footer span{font-family:'Geist Mono',monospace;font-size:10px;font-weight:300;co
           <span class="proj-tag">Branding</span><span class="proj-tag">Responsive</span><span class="proj-tag">JavaScript</span>
         </div>
       </div>
-      <div class="proj-preview">
-        <div class="mock mock-nona">
-          <div class="mock-bar"><div class="mock-dot"></div><div class="mock-dot"></div><div class="mock-dot"></div><div class="mock-url"></div></div>
-          <div class="mock-body">
-            <div class="m-big"><span class="m-big-text">Nona's Ajvar</span></div>
-            <div class="m-row"><div class="m-block"></div><div class="m-block"></div></div>
-            <div class="m-line"></div><div class="m-line"></div>
-          </div>
-        </div>
-      </div>
       <span class="proj-arrow-wrap">↗</span>
     </a>
 
@@ -525,18 +452,6 @@ footer span{font-family:'Geist Mono',monospace;font-size:10px;font-weight:300;co
         <p class="proj-desc">Real estate listing platform with structured navigation and simplified property browsing flows. Clean UI that makes complex data feel approachable.</p>
         <div class="proj-tags">
           <span class="proj-tag">Real Estate</span><span class="proj-tag">UX</span><span class="proj-tag">Vue.js</span>
-        </div>
-      </div>
-      <div class="proj-preview">
-        <div class="mock mock-prona">
-          <div class="mock-bar"><div class="mock-dot"></div><div class="mock-dot"></div><div class="mock-dot"></div><div class="mock-url"></div></div>
-          <div class="mock-body">
-            <div class="m-map"><div class="m-pin"></div></div>
-            <div class="m-listings">
-              <div class="m-listing"><div class="m-listing-img"></div><div class="m-listing-info"><div class="m-mini-line"></div><div class="m-mini-line red"></div></div></div>
-              <div class="m-listing"><div class="m-listing-img"></div><div class="m-listing-info"><div class="m-mini-line"></div><div class="m-mini-line red"></div></div></div>
-            </div>
-          </div>
         </div>
       </div>
       <span class="proj-arrow-wrap">↗</span>
@@ -557,9 +472,9 @@ footer span{font-family:'Geist Mono',monospace;font-size:10px;font-weight:300;co
       </div>
       <div>
         <div class="exp-role">Frontend Engineer</div>
-        <p class="exp-txt">Developing and maintaining scalable frontend applications using Vue 3 and React across a range of digital products. Focused on building clean, performant interfaces — from architecture decisions to pixel-level detail. Built and maintained shared component libraries and mixins that standardize patterns across teams and eliminate redundancy. Implemented state management with Pinia and Vuex, collaborated closely with backend engineers and product teams, and drove performance optimization across the product suite.</p>
+        <p class="exp-txt">Developing and maintaining scalable frontend applications with a strong focus on Vue 3 and modern JavaScript across a range of digital products, while also contributing in React where needed. Focused on building clean, performant interfaces — from architecture decisions to pixel-level detail. Built and maintained shared component libraries and mixins that standardize patterns across teams and eliminate redundancy. Implemented state management with Pinia and Vuex, collaborated closely with backend engineers and product teams, and drove performance optimization across the product suite.</p>
         <div class="exp-badges">
-          <span class="exp-badge">Vue 3</span><span class="exp-badge">React</span><span class="exp-badge">Nuxt</span>
+          <span class="exp-badge">Vue 3</span><span class="exp-badge">JavaScript</span><span class="exp-badge">React</span><span class="exp-badge">Nuxt</span>
           <span class="exp-badge">Pinia / Vuex</span><span class="exp-badge">Tailwind CSS</span><span class="exp-badge">SCSS</span>
           <span class="exp-badge">Component Libraries</span><span class="exp-badge">REST APIs</span><span class="exp-badge">Git</span>
         </div>
@@ -623,7 +538,7 @@ footer span{font-family:'Geist Mono',monospace;font-size:10px;font-weight:300;co
   <h2 class="sh reveal d1">What I work with</h2>
   <div class="sk-grid">
     <div class="sk-cell reveal"><div class="sk-label">Languages</div><ul class="sk-list"><li>JavaScript (ES6+)</li><li>HTML5</li><li>CSS3 / SCSS</li><li>SQL</li></ul></div>
-    <div class="sk-cell reveal d1"><div class="sk-label">Frameworks</div><ul class="sk-list"><li>Vue 3</li><li>React</li><li>Nuxt</li><li>Next.js</li><li>Angular</li></ul></div>
+    <div class="sk-cell reveal d1"><div class="sk-label">Frameworks</div><ul class="sk-list"><li>Vue 3</li><li>Nuxt</li><li>React</li><li>Next.js</li><li>Angular</li></ul></div>
     <div class="sk-cell reveal d2"><div class="sk-label">State & Styling</div><ul class="sk-list"><li>Pinia / Vuex</li><li>Tailwind CSS</li><li>SCSS / CSS Mixins</li><li>Bootstrap</li></ul></div>
     <div class="sk-cell reveal d3"><div class="sk-label">Backend & Data</div><ul class="sk-list"><li>REST API Integration</li><li>Firebase</li><li>SQL</li></ul></div>
     <div class="sk-cell reveal d4"><div class="sk-label">Practices</div><ul class="sk-list"><li>Component Libraries</li><li>Responsive Design</li><li>Performance Optimization</li><li>Casting (Chromecast)</li><li>Git / GitHub</li></ul></div>
@@ -707,7 +622,7 @@ if (ctaZone && ctaBtn && isFine) {
 
 /* TYPED EFFECT */
 const typedEl = document.getElementById('typedEl');
-const phrases = ['Vue 3 · React · Nuxt', 'Component Architecture', 'Scalable Interfaces', 'Clean, Readable Code'];
+const phrases = ['Vue 3 · JavaScript · React', 'Vue-first Frontends', 'Scalable Interfaces', 'Clean, Readable Code'];
 let pi = 0, ci = 0, deleting = false;
 function type() {
   const phrase = phrases[pi];
