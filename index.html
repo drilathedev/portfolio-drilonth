@@ -45,15 +45,15 @@
     }
 
     /* Prevent iOS Safari from auto-linking/coloring phone numbers and emails */
-    a {
-      color: inherit;
-      -webkit-text-decoration-skip: none
-    }
-
     a[href^="tel"],
     a[href^="mailto"] {
       color: inherit;
       text-decoration: none
+    }
+
+    .footer-li a {
+      color: var(--muted);
+      opacity: .45
     }
 
     /* GRAIN */
@@ -1484,40 +1484,51 @@
       color: var(--red)
     }
 
-    /* iOS Safari fix — overflow:hidden clips ::after bottom lines */
-    .proj,
-    .exp-row,
-    .extra-row,
-    .val-card,
-    .sk-cell {
-      -webkit-transform: translateZ(0);
-      transform: translateZ(0);
-    }
+    /* On touch devices, disable the ::after hover lines entirely — they flicker and look buggy.
+   Instead show a subtle left border flash on tap via .touched class added by JS */
+    @media(hover:none) {
 
-    /* Use clip instead of overflow:hidden so ::after bottom line stays visible */
-    .proj {
-      overflow: visible;
-      clip-path: inset(0 0 -3px 0)
-    }
+      .proj::after,
+      .exp-row::after,
+      .extra-row::after,
+      .val-card::after,
+      .sk-cell::after,
+      .proj:hover::after,
+      .exp-row:hover::after,
+      .extra-row:hover::after,
+      .val-card:hover::after,
+      .sk-cell:hover::after {
+        display: none;
+      }
 
-    .exp-row {
-      overflow: visible;
-      clip-path: inset(0 0 -3px 0)
-    }
+      .proj:hover .proj-name,
+      .proj:hover .proj-n,
+      .proj:hover .proj-tag,
+      .proj:hover .proj-arrow,
+      .exp-row:hover .exp-role,
+      .exp-row:hover .exp-badge,
+      .extra-row:hover .extra-title,
+      .val-card:hover .val-title,
+      .sk-cell:hover .sk-list li {
+        color: inherit;
+        border-color: inherit;
+      }
 
-    .extra-row {
-      overflow: visible;
-      clip-path: inset(0 0 -3px 0)
-    }
+      /* Clean tap feedback — left red bar animates in on touch */
+      .proj,
+      .exp-row,
+      .extra-row,
+      .val-card {
+        transition: border-left-color .2s;
+        border-left: 2px solid transparent;
+      }
 
-    .val-card {
-      overflow: visible;
-      clip-path: inset(0 0 -3px 0)
-    }
-
-    .sk-cell {
-      overflow: visible;
-      clip-path: inset(0 0 -3px 0)
+      .proj.touched,
+      .exp-row.touched,
+      .extra-row.touched,
+      .val-card.touched {
+        border-left-color: var(--red);
+      }
     }
 
     @keyframes fadeUp {
@@ -1992,9 +2003,8 @@
             <span class="proj-n">03</span>
             <div class="proj-name">Prona360</div>
           </div>
-          <p class="proj-desc">Real estate listing platform built with React, TypeScript, TanStack, Radix UI, and
-            Firebase, with structured navigation and simplified property browsing flows that make complex data feel
-            approachable.</p>
+          <p class="proj-desc">Real estate listing platform with structured navigation and simplified property browsing
+            flows. Clean UI that makes complex data feel approachable.</p>
           <div class="proj-tags">
             <span class="proj-tag">React</span><span class="proj-tag">TypeScript</span><span
               class="proj-tag">TanStack</span><span class="proj-tag">Radix UI</span><span
@@ -2190,9 +2200,11 @@
     <div class="contact-ghost">Hello.</div>
     <span class="stag reveal">Let's work together</span>
     <h2 class="contact-h reveal d1">Got a project<br>in <em>mind?</em></h2>
-    <div><a href="mailto:ddrilonthaci@gmail.com" class="c-email reveal d2">ddrilonthaci@gmail.com</a></div>
+    <div><a href="/cdn-cgi/l/email-protection#debabaacb7b2b1b0aab6bfbdb79eb9b3bfb7b2f0bdb1b3"
+        class="c-email reveal d2"><span class="__cf_email__"
+          data-cfemail="395d5d4b505556574d51585a50795e54585055175a5654">[email&#160;protected]</span></a></div>
     <div class="c-links reveal d3">
-      <a href="mailto:ddrilonthaci@gmail.com" class="c-link">Email</a>
+      <a href="/cdn-cgi/l/email-protection#a6c2c2d4cfcac9c8d2cec7c5cfe6c1cbc7cfca88c5c9cb" class="c-link">Email</a>
       <span class="c-link" style="cursor:default">+383 49 286 116</span>
       <a href="https://www.linkedin.com/in/drilon-thaqi-70800219bl" target="_blank" rel="noopener"
         class="c-link c-link-li">
@@ -2218,6 +2230,7 @@
     <span>Frontend Engineer · Pristina, Kosovo</span>
   </footer>
 
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
   <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
   <script>
     const isFine = matchMedia('(pointer:fine)').matches;
@@ -2289,6 +2302,14 @@
       }
     }
     setTimeout(type, 1600);
+
+    /*TOUCH TAP FEEDBACK */
+    if (!isFine) {
+      document.querySelectorAll('.proj,.exp-row,.extra-row,.val-card').forEach(el => {
+        el.addEventListener('touchstart', () => el.classList.add('touched'), { passive: true });
+        el.addEventListener('touchend', () => setTimeout(() => el.classList.remove('touched'), 350), { passive: true });
+      });
+    }
 
     /* REVEAL */
     const obs = new IntersectionObserver(entries => {
