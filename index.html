@@ -1386,13 +1386,15 @@
       color: var(--red)
     }
 
-    .c-email {
+    .c-email,
+    .c-email:visited {
       display: inline-block;
       font-family: 'Geist Mono', monospace;
       font-size: 14px;
       font-weight: 300;
       color: var(--muted);
       text-decoration: none;
+      -webkit-text-fill-color: currentColor;
       border-bottom: 1px solid var(--border);
       padding-bottom: 4px;
       margin-bottom: 52px;
@@ -1411,13 +1413,15 @@
       flex-wrap: wrap
     }
 
-    .c-link {
+    .c-link,
+    .c-link:visited {
       font-size: 10px;
       font-weight: 700;
       letter-spacing: .2em;
       text-transform: uppercase;
       color: var(--muted);
       text-decoration: none;
+      -webkit-text-fill-color: currentColor;
       position: relative;
       transition: color .3s
     }
@@ -1471,11 +1475,13 @@
       transition: color .3s
     }
 
-    .footer-li a {
+    .footer-li a,
+    .footer-li a:visited {
       font-family: 'Geist Mono', monospace;
       font-size: 10px;
       font-weight: 300;
       color: var(--muted);
+      -webkit-text-fill-color: currentColor;
       opacity: .45;
       text-decoration: none;
       transition: opacity .2s, color .2s;
@@ -2234,14 +2240,18 @@
   </footer>
 
   <script>
-    const navigationEntry = performance.getEntriesByType('navigation')[0];
     const isFine = matchMedia('(pointer:fine)').matches;
 
-    /* RESET SCROLL ON REFRESH */
+    /* ALWAYS START AT TOP ON PAGE LOAD / REFRESH */
+    const resetScrollPosition = () => {
+      document.documentElement.scrollTop = 0;
+      document.body.scrollTop = 0;
+      scrollTo({ top: 0, left: 0, behavior: 'auto' });
+    };
     if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
-    if (navigationEntry?.type === 'reload' || performance.navigation?.type === 1) {
-      addEventListener('load', () => scrollTo(0, 0), { once: true });
-    }
+    resetScrollPosition();
+    addEventListener('load', resetScrollPosition, { once: true });
+    addEventListener('pageshow', resetScrollPosition);
 
     /* PROGRESS */
     const prog = document.getElementById('prog');
