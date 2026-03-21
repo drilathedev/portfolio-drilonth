@@ -1484,51 +1484,51 @@
       color: var(--red)
     }
 
-    /* On touch devices, disable the ::after hover lines entirely — they flicker and look buggy.
-   Instead show a subtle left border flash on tap via .touched class added by JS */
-    @media(hover:none) {
 
-      .proj::after,
-      .exp-row::after,
-      .extra-row::after,
-      .val-card::after,
-      .sk-cell::after,
-      .proj:hover::after,
-      .exp-row:hover::after,
-      .extra-row:hover::after,
-      .val-card:hover::after,
-      .sk-cell:hover::after {
-        display: none;
-      }
 
-      .proj:hover .proj-name,
-      .proj:hover .proj-n,
-      .proj:hover .proj-tag,
-      .proj:hover .proj-arrow,
-      .exp-row:hover .exp-role,
-      .exp-row:hover .exp-badge,
-      .extra-row:hover .extra-title,
-      .val-card:hover .val-title,
-      .sk-cell:hover .sk-list li {
-        color: inherit;
-        border-color: inherit;
-      }
+    /* Touch hover mirrors — .hover class added by touchstart, same as :hover */
+    .proj.hover::after,
+    .exp-row.hover::after,
+    .extra-row.hover::after,
+    .val-card.hover::after,
+    .sk-cell.hover::after {
+      transform: scaleX(1)
+    }
 
-      /* Clean tap feedback — left red bar animates in on touch */
-      .proj,
-      .exp-row,
-      .extra-row,
-      .val-card {
-        transition: border-left-color .2s;
-        border-left: 2px solid transparent;
-      }
+    .proj.hover .proj-name,
+    .proj.hover .proj-n {
+      color: var(--red)
+    }
 
-      .proj.touched,
-      .exp-row.touched,
-      .extra-row.touched,
-      .val-card.touched {
-        border-left-color: var(--red);
-      }
+    .proj.hover .proj-tag {
+      border-color: rgba(214, 40, 40, .3);
+      color: var(--red)
+    }
+
+    .proj.hover .proj-arrow-wrap {
+      color: var(--red);
+      transform: translate(5px, -5px)
+    }
+
+    .exp-row.hover .exp-role {
+      color: var(--red)
+    }
+
+    .exp-row.hover .exp-badge {
+      color: var(--red);
+      border-color: rgba(214, 40, 40, .28)
+    }
+
+    .extra-row.hover .extra-title {
+      color: var(--red)
+    }
+
+    .val-card.hover .val-title {
+      color: var(--red)
+    }
+
+    .sk-cell.hover .sk-list li {
+      color: var(--ink)
     }
 
     @keyframes fadeUp {
@@ -2004,7 +2004,8 @@
             <div class="proj-name">Prona360</div>
           </div>
           <p class="proj-desc">Real estate listing platform with structured navigation and simplified property browsing
-            flows. Clean UI that makes complex data feel approachable.</p>
+            flows. Clean UI that makes complex data feel approachable. Built with React, TypeScript, TanStack, Radix UI
+            and Firebase.</p>
           <div class="proj-tags">
             <span class="proj-tag">React</span><span class="proj-tag">TypeScript</span><span
               class="proj-tag">TanStack</span><span class="proj-tag">Radix UI</span><span
@@ -2304,12 +2305,11 @@
     setTimeout(type, 1600);
 
     /*TOUCH TAP FEEDBACK */
-    if (!isFine) {
-      document.querySelectorAll('.proj,.exp-row,.extra-row,.val-card').forEach(el => {
-        el.addEventListener('touchstart', () => el.classList.add('touched'), { passive: true });
-        el.addEventListener('touchend', () => setTimeout(() => el.classList.remove('touched'), 350), { passive: true });
-      });
-    }
+    document.querySelectorAll('.proj,.exp-row,.extra-row,.val-card,.sk-cell').forEach(el => {
+      el.addEventListener('touchstart', () => el.classList.add('hover'), { passive: true });
+      el.addEventListener('touchend', () => setTimeout(() => el.classList.remove('hover'), 600), { passive: true });
+      el.addEventListener('touchcancel', () => el.classList.remove('hover'), { passive: true });
+    });
 
     /* REVEAL */
     const obs = new IntersectionObserver(entries => {
