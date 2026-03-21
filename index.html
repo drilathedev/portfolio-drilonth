@@ -338,6 +338,11 @@
       transition: opacity .2s 0s, transform .2s 0s cubic-bezier(.16, 1, .3, 1)
     }
 
+    .mob-meta a {
+      color: inherit;
+      text-decoration: none
+    }
+
     .mob-menu.open .mob-meta {
       opacity: 1;
       transform: none;
@@ -1827,8 +1832,7 @@
     <a href="#exp" class="mob-link">Experience</a>
     <a href="#contact" class="mob-link">Contact</a>
     <div class="mob-meta">
-      <a href="/cdn-cgi/l/email-protection" class="__cf_email__"
-        data-cfemail="c8acacbaa1a4a7a6bca0a9aba188afa5a9a1a4e6aba7a5">[email&#160;protected]</a><br>
+      <a href="mailto:ddrilonthaci@gmail.com">ddrilonthaci@gmail.com</a><br>
       +383 49 286 116<br>
       Pristina, Kosovo
     </div>
@@ -2201,11 +2205,9 @@
     <div class="contact-ghost">Hello.</div>
     <span class="stag reveal">Let's work together</span>
     <h2 class="contact-h reveal d1">Got a project<br>in <em>mind?</em></h2>
-    <div><a href="/cdn-cgi/l/email-protection#debabaacb7b2b1b0aab6bfbdb79eb9b3bfb7b2f0bdb1b3"
-        class="c-email reveal d2"><span class="__cf_email__"
-          data-cfemail="395d5d4b505556574d51585a50795e54585055175a5654">[email&#160;protected]</span></a></div>
+    <div><a href="mailto:ddrilonthaci@gmail.com" class="c-email reveal d2">ddrilonthaci@gmail.com</a></div>
     <div class="c-links reveal d3">
-      <a href="/cdn-cgi/l/email-protection#a6c2c2d4cfcac9c8d2cec7c5cfe6c1cbc7cfca88c5c9cb" class="c-link">Email</a>
+      <a href="mailto:ddrilonthaci@gmail.com" class="c-link">Email</a>
       <span class="c-link" style="cursor:default">+383 49 286 116</span>
       <a href="https://www.linkedin.com/in/drilon-thaqi-70800219bl" target="_blank" rel="noopener"
         class="c-link c-link-li">
@@ -2231,10 +2233,15 @@
     <span>Frontend Engineer · Pristina, Kosovo</span>
   </footer>
 
-  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
-  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
   <script>
+    const navigationEntry = performance.getEntriesByType('navigation')[0];
     const isFine = matchMedia('(pointer:fine)').matches;
+
+    /* RESET SCROLL ON REFRESH */
+    if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+    if (navigationEntry?.type === 'reload' || performance.navigation?.type === 1) {
+      addEventListener('load', () => scrollTo(0, 0), { once: true });
+    }
 
     /* PROGRESS */
     const prog = document.getElementById('prog');
