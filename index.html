@@ -2243,10 +2243,23 @@
     const isFine = matchMedia('(pointer:fine)').matches;
 
     /* SCROLL TO TOP ON REFRESH */
+    const forceScrollTop = () => {
+      document.documentElement.scrollTop = 0;
+      document.body.scrollTop = 0;
+      window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+      requestAnimationFrame(() => {
+        window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+      });
+      setTimeout(() => window.scrollTo({ top: 0, left: 0, behavior: 'auto' }), 60);
+    };
     if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
-    window.scrollTo(0, 0);
-    addEventListener('load', () => window.scrollTo(0, 0));
-    addEventListener('pageshow', () => window.scrollTo(0, 0));
+    forceScrollTop();
+    addEventListener('load', forceScrollTop);
+    addEventListener('pageshow', forceScrollTop);
+    addEventListener('beforeunload', () => {
+      document.documentElement.scrollTop = 0;
+      document.body.scrollTop = 0;
+    });
 
     /* PROGRESS */
     const prog = document.getElementById('prog');
